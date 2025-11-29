@@ -78,6 +78,7 @@ jobs:
           tar -zxf ncurses-6.5.tar.gz && cd ncurses-6.5
           ./configure --disable-shared && make -j4
           sudo make install
+          sudo ln -s /usr/local/include/ncursesw/curses.h /usr/local/include/ncurses.h
       - name: Install Zlib
         run: |
           curl -O https://www.zlib.net/zlib-1.3.1.tar.gz
@@ -125,9 +126,8 @@ jobs:
         run: |
           git clone -b 'feature/igc' --depth 1 https://github.com/emacs-mirror/emacs.git
           cd emacs && ./autogen.sh
-          ./configure CPPFLAGS='-I/usr/local/include'  \
-                      LDFLAGS='-L/usr/local/lib'       \
-                      PKG_CONFIG='pkg-config --static' \
+          ./configure PKG_CONFIG='pkg-config --static' \
+                      LIBS_TERMCAP='-lncursesw'        \
                       --disable-gc-mark-trace          \
                       --without-all                    \
                       --with-gmp                       \
