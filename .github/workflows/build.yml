@@ -99,8 +99,8 @@ jobs:
           sudo make install
       - name: Install Libnettle
         run: |
-          curl -LO https://ftpmirror.gnu.org/gnu/nettle/nettle-4.0.tar.gz
-          tar -zxf nettle-4.0.tar.gz && cd nettle-4.0
+          curl -LO https://ftpmirror.gnu.org/gnu/nettle/nettle-3.10.2.tar.gz
+          tar -zxf nettle-3.10.2.tar.gz && cd nettle-3.10.2
           ./configure --disable-shared && make -j4
           sudo make install
       - name: Install Libidn2
