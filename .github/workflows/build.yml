@@ -56,8 +56,8 @@ jobs:
           sudo make install
       - name: Install GNU Libiconv
         run: |
-          curl -LO https://ftpmirror.gnu.org/gnu/libiconv/libiconv-1.19.tar.xz
-          tar -Jxf libiconv-1.19.tar.xz && cd libiconv-1.19
+          curl -LO https://ftpmirror.gnu.org/gnu/libiconv/libiconv-1.19.tar.gz
+          tar -zxf libiconv-1.19.tar.gz && cd libiconv-1.19
           ./configure --disable-shared && make -j4
           sudo make install
       - name: Install GNU Libunistring
